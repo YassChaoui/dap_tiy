@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" th:href="@{css/dap.css}" href= "../static/css/dap.css">
+    </head>
+    <body>
+
+    <!--<span> User "brutes"</span><span th:text="${users}"></span>-->
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Token</th> 
+        <th>Expire</th>
+        <th>Refresh</th>
+      </tr>
+       <tr th:each="entry: ${users}">
+        <td th:text="${entry.key}">Bob</td>
+        <td th:text="${entry.value.accessToken}"></td>
+        <td th:text="${entry.value.expirationTimeMilliseconds}"></td>
+        <td th:text="${entry.value.refreshToken}"></td>
+      </tr>
+    </table>
+
+    </body>
+        </html>

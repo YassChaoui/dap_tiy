@@ -19,7 +19,7 @@ public class Config {
      * @param appName         if
      */
 
-    private String tokenFolder;
+    private String tokenDirectory;
     /** . */
     private String credFilePath;
     /** . */
@@ -27,28 +27,17 @@ public class Config {
 
     /** . */
     public Config() {
-        tokenFolder = TOKEN_DIR;
+        tokenDirectory = TOKEN_DIR;
         credFilePath = CREDENTIALS_FILE_PATH;
         appName = APPLICATION_NAME;
     }
 
     /**
-     * @param tf  .
-     * @param cfp .
-     * @param an  .
-     */
-    Config(final String tf, final String cfp, final String an) {
-        tokenFolder = tf;
-        credFilePath = cfp;
-        appName = an;
-    }
-
-    /**
      * @return tokenFolderName
      */
-    public String getTokenFolder() {
+    public String getTokenDirectory() {
         LOG.info("TokenFolder returned");
-        return tokenFolder;
+        return tokenDirectory;
     }
 
     /**
@@ -61,9 +50,9 @@ public class Config {
     /**
      * @param newName d
      */
-    public void setTokenFolderName(final String newName) {
+    public void setTokenDirectory(final String tokendirectory) {
         LOG.info("TokenFolder changed");
-        this.tokenFolder = newName;
+        this.tokenDirectory = tokendirectory;
     }
 
     /**

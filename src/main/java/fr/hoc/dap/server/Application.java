@@ -29,6 +29,8 @@ public class Application {
     @Bean
     public Config createConf() {
         Config conf = new Config();
+        conf.setCreditFilePath(System.getProperty("user.home"));
+        conf.setTokenDirectory(System.getProperty("user.home") + "/dap/credentials.json");
         return conf;
     }
 
@@ -39,23 +41,23 @@ public class Application {
     @Bean
     public CommandLineRunner commandLineRunner(final ApplicationContext ctx) {
         return args -> {
-//            // Faire un appel avec AppName defaut
-//            LOG.info("infotest");
-//            LOG.error("errortest");
-//            LOG.debug("debugtest");
-//
-//            Config conf = new Config();
-//            System.out.println(conf.getAppName());
-//            conf.setAppName("bob");
-//
-//            System.out.println(conf.getAppName());
+            //            // Faire un appel avec AppName defaut
+            //            LOG.info("infotest");
+            //            LOG.error("errortest");
+            //            LOG.debug("debugtest");
+            //
+            //            Config conf = new Config();
+            //            System.out.println(conf.getAppName());
+            //            conf.setAppName("bob");
+            //
+            //            System.out.println(conf.getAppName());
 
-//            GMailService gs = GMailService.getInstance();
-//            gs.setConfig(conf);
-//            CalendarService cs = CalendarService.getInstance();
-//            cs.setConfig(conf);
-//            PeoplService ps = PeoplService.getInstance();
-//            ps.setConfig(conf);
+            //            GMailService gs = GMailService.getInstance();
+            //            gs.setConfig(conf);
+            //            CalendarService cs = CalendarService.getInstance();
+            //            cs.setConfig(conf);
+            //            PeoplService ps = PeoplService.getInstance();
+            //            ps.setConfig(conf);
             /*
              * int numberOfUnreadMessages = gs.getNumberUnreadEmails(); System.out.println(numberOfUnreadMessages);
              * String[BUFFSIZE] test; test = cs.getNextEvent(); System.out.println(Arrays.toString(test));

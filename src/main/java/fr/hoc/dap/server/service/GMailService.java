@@ -27,9 +27,10 @@ public final class GMailService extends GoogleService {
      * @throws IOException              if credentials problem
      */
     public Gmail getService(final String userKey) throws GeneralSecurityException, IOException {
-        final NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
-        return new Gmail.Builder(httptransport, JSON_FACTORY, getCredentials(httptransport, userKey))
+        NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
+        Gmail service = new Gmail.Builder(httptransport, JSON_FACTORY, getCredentials(httptransport, userKey))
                 .setApplicationName(getConfig().getAppName()).build();
+        return service;
     }
 
     /**

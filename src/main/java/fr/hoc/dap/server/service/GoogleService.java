@@ -36,57 +36,22 @@ class GoogleService {
      * Global instance of the scopes required by this quickstart. If modifying these
      * scopes, delete your previously saved tokens/ folder.
      */
-    private static ArrayList<String> scopes = new ArrayList<String>();
+    private static ArrayList<String> scopes;
 
     /**
      * Creates an authorized Credential object.
      *
-     * @param httptransport The network HTTP Transport.
+    
      * @param userKey       .
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
+     * @throws GeneralSecurityException 
      */
 
-    protected Credential getCredentials(final NetHttpTransport httptransport, final String userKey) throws IOException {
-        // final int port = 8888;
-        scopes.add(GmailScopes.GMAIL_READONLY);
-        scopes.add(PeopleServiceScopes.CONTACTS_READONLY);
-        scopes.add(GmailScopes.GMAIL_LABELS);
-        scopes.add(CalendarScopes.CALENDAR_READONLY);
+    public Credential getCredentials(final String userKey) throws IOException, GeneralSecurityException {
 
-        // Load client secrets.
-        InputStream in = GMailService.class.getResourceAsStream(configuration.getCreditFilePath());
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-
-        // Build flow and trigger user authorization request.
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httptransport, JSON_FACTORY,
-                clientSecrets, scopes)
-                        .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(configuration.getTokenFolder())))
-                        .setAccessType("offline").build();
-        //        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(port).build();
-        //        return new AuthorizationCodeInstalledApp(flow, receiver).authorize(userKey);
+        GoogleAuthorizationCodeFlow flow = getFlow();
         return flow.loadCredential(userKey);
-    }
-
-    /**
-     * @return .
-     * @throws GeneralSecurityException .
-     * @throws IOException              .
-     */
-    public GoogleAuthorizationCodeFlow getFlow() throws GeneralSecurityException, IOException {
-        scopes.add(GmailScopes.GMAIL_READONLY);
-        scopes.add(PeopleServiceScopes.CONTACTS_READONLY);
-        scopes.add(GmailScopes.GMAIL_LABELS);
-        scopes.add(CalendarScopes.CALENDAR_READONLY);
-
-        final NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
-        InputStream in = GMailService.class.getResourceAsStream(configuration.getCreditFilePath());
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httptransport, JSON_FACTORY,
-                clientSecrets, scopes)
-                        .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(configuration.getTokenFolder())))
-                        .setAccessType("offline").build();
-        return flow;
     }
 
     /**
@@ -98,8 +63,31 @@ class GoogleService {
 
     /** @return . */
 
-    public Config getConfig() {
-        return this.configuration;
+    protected Config getConfig() {
+        return configuration;
+    }
+
+    /**
+     * @return .
+     * @throws GeneralSecurityException .
+     * @throws IOException              .
+     */
+    public GoogleAuthorizationCodeFlow getFlow() throws GeneralSecurityException, IOException {
+        scopes = new ArrayList<String>();
+        scopes.add(GmailScopes.GMAIL_READONLY);
+        scopes.add(PeopleServiceScopes.CONTACTS_READONLY);
+        scopes.add(GmailScopes.GMAIL_LABELS);
+        scopes.add(CalendarScopes.CALENDAR_READONLY);
+
+        NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
+        InputStream in = CalendarService.class.getResourceAsStream(configuration.getCreditFilePath());
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httptransport, JSON_FACTORY,
+                clientSecrets, scopes)
+                        .setDataStoreFactory(
+                                new FileDataStoreFactory(new java.io.File(configuration.getTokenDirectory())))
+                        .setAccessType("offline").build();
+        return flow;
     }
 
 }

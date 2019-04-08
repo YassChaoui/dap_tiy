@@ -1,0 +1,17 @@
+<html>
+	<head>
+	<title> Salut de Dap</title>
+	<link rel="stylesheet" type"text/css" th:href="@{css/dap.css}" href="../static/css/dap.css" >
+	</head>
+	
+	<body>
+	
+	<span> Salut ! </span ><span th:text="${maVar}"> Gertrude </span>
+	
+	<div> <ul>
+			<li th:each="bete: ${bebetes}"><span th:text="${bete}">Une des betes </span>
+			</li>
+</ul>
+</div>
+	</body>
+</html>
