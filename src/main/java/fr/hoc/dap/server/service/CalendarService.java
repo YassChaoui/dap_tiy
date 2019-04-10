@@ -26,7 +26,7 @@ public final class CalendarService extends GoogleService {
      */
     public Calendar getService(final String userKey) throws GeneralSecurityException, IOException {
         final NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
-        return new Calendar.Builder(httptransport, JSON_FACTORY, getCredentials(httptransport, userKey))
+        return new Calendar.Builder(httptransport, JSON_FACTORY, getCredentials(userKey))
                 .setApplicationName(getConfig().getAppName()).build();
     }
 

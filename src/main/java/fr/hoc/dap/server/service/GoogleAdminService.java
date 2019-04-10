@@ -18,4 +18,9 @@ public class GoogleAdminService extends GoogleService {
         return datas;
     }
 
+    public DataStore<StoredCredential> deleteUser(final String userkey) throws GeneralSecurityException, IOException {
+
+        DataStore<StoredCredential> datas = getFlow().getCredentialDataStore().delete(userkey);
+        return datas;
+    }
 }

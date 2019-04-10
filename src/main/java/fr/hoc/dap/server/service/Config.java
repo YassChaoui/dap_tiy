@@ -8,9 +8,9 @@ public class Config {
     /** . */
     private static final Logger LOG = LogManager.getLogger();
     /** * Fichier de permissions acceptées. */
-    private static final String TOKEN_DIR = "tokens";
+    private static final String TOKEN_DIR = System.getProperty("user.home") + "/dap/tokens";
     /** * Fichier de config api. */
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = System.getProperty("user.home") + "/dap/credentials.json";
     /** * Nom de l'application. */
     private static final String APPLICATION_NAME = "HoC DaP";
     /**

@@ -1,8 +1,9 @@
 package fr.hoc.dap.server.service;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.Reader;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
@@ -79,9 +80,10 @@ class GoogleService {
         scopes.add(GmailScopes.GMAIL_LABELS);
         scopes.add(CalendarScopes.CALENDAR_READONLY);
 
-        NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
-        InputStream in = CalendarService.class.getResourceAsStream(configuration.getCreditFilePath());
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+        HttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
+        File in = new java.io.File(configuration.getCreditFilePath());
+        Reader targetReader = new FileReader(in);
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, targetReader);
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(httptransport, JSON_FACTORY,
                 clientSecrets, scopes)
                         .setDataStoreFactory(

@@ -67,7 +67,7 @@ public class GoogleAccount extends GoogleService {
             throw new ServletException("Error while trying to conenct Google Account");
         }
 
-        return "redirect:/";
+        return "redirect:/email/nbunread?userKey=" + getUserid(session);
     }
 
     /**

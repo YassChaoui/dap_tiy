@@ -22,7 +22,7 @@ public final class PeoplService extends GoogleService {
     public PeopleService getService() throws GeneralSecurityException, IOException {
         final NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
         GoogleService gs = new GoogleService();
-        return new PeopleService.Builder(httptransport, JSON_FACTORY, getCredentials(httptransport, "me"))
+        return new PeopleService.Builder(httptransport, JSON_FACTORY, getCredentials("me"))
                 .setApplicationName(gs.getConfig().getAppName()).build();
     }
 

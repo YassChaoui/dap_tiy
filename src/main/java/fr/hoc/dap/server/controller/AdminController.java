@@ -20,16 +20,15 @@ import fr.hoc.dap.server.service.GoogleAdminService;
 public class AdminController {
     @Autowired
     private GoogleAdminService gAdminService;
-    //private DataStore<StoredCredential> datas;
 
     @RequestMapping("/admin")
     public String admin(ModelMap model) throws GeneralSecurityException, IOException {
-        DataStore<StoredCredential> data = gAdminService.getUser();
+        DataStore<StoredCredential> user = gAdminService.getUser();
         Map<String, StoredCredential> userMap = new HashMap<>();
-        Set<String> keys = data.keySet();
+        Set<String> keys = user.keySet();
 
         for (String key : keys) {
-            StoredCredential value = data.get(key);
+            StoredCredential value = user.get(key);
             userMap.put(key, value);
 
         }
@@ -37,4 +36,9 @@ public class AdminController {
         return "admin";
     }
 
+    @RequestMapping("/delete/user")
+    public String deleteUser(final String userkey) throws GeneralSecurityException, IOException {
+        DataStore<StoredCredential> deleteuser = gAdminService.deleteUser(userkey);
+        return "redirect:/admin";
+    }
 }

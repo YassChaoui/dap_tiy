@@ -29,8 +29,8 @@ public class Application {
     @Bean
     public Config createConf() {
         Config conf = new Config();
-        conf.setCreditFilePath(System.getProperty("user.home"));
-        conf.setTokenDirectory(System.getProperty("user.home") + "/dap/credentials.json");
+        //conf.setCreditFilePath(System.getProperty("user.home") + "/dap/credentials.json");
+        //conf.setTokenDirectory(System.getProperty("user.home") + "/dap/tokens");
         return conf;
     }
 
