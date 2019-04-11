@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.hoc.dap.server.service.CalendarService;
 
-/** . */
+/** Controlleur Calendar. */
 @RestController
 public class CalendarController {
     /** Acces to Calendar API. */

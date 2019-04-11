@@ -16,13 +16,23 @@ import com.google.api.client.util.store.DataStore;
 
 import fr.hoc.dap.server.service.GoogleAdminService;
 
+/** Admin Controlleur Calendar. */
 @Controller
 public class AdminController {
+    /** Acces du GoogleAdminService .*/
     @Autowired
     private GoogleAdminService gAdminService;
 
+    /**
+     * Url de la page admin.
+     * @return renvoi la page admin.
+     * @param model .
+     * @throws GeneralSecurityException .
+     * @throws IOException              .
+     * @throws NumberFormatException    .
+     */
     @RequestMapping("/admin")
-    public String admin(ModelMap model) throws GeneralSecurityException, IOException {
+    public String admin(final ModelMap model) throws GeneralSecurityException, IOException {
         DataStore<StoredCredential> user = gAdminService.getUser();
         Map<String, StoredCredential> userMap = new HashMap<>();
         Set<String> keys = user.keySet();
@@ -36,6 +46,13 @@ public class AdminController {
         return "admin";
     }
 
+    /**
+     * @return renvoi la page delete/user.
+     * @param userkey .
+     * @throws GeneralSecurityException .
+     * @throws IOException              .
+     * @throws NumberFormatException    .
+     */
     @RequestMapping("/delete/user")
     public String deleteUser(final String userkey) throws GeneralSecurityException, IOException {
         DataStore<StoredCredential> deleteuser = gAdminService.deleteUser(userkey);

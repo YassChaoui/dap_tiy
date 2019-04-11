@@ -48,7 +48,7 @@ public class Config {
     }
 
     /**
-     * @param newName d
+     * @param tokendirectory .
      */
     public void setTokenDirectory(final String tokendirectory) {
         LOG.info("TokenFolder changed");

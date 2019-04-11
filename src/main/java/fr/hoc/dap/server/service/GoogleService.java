@@ -41,12 +41,10 @@ class GoogleService {
 
     /**
      * Creates an authorized Credential object.
-     *
-    
      * @param userKey       .
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
-     * @throws GeneralSecurityException 
+     * @throws GeneralSecurityException .
      */
 
     public Credential getCredentials(final String userKey) throws IOException, GeneralSecurityException {
