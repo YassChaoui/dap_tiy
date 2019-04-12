@@ -15,7 +15,7 @@ import com.google.api.services.people.v1.model.Person;
 public final class PeoplService extends GoogleService {
 
     /**
-     * @return .
+     * @return PeopleService qui renvoit le service associé a Google.
      * @throws GeneralSecurityException .
      * @throws IOException              .
      */

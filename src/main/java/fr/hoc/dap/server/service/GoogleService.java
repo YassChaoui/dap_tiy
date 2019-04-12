@@ -67,7 +67,7 @@ class GoogleService {
     }
 
     /**
-     * @return .
+     * @return flow permettant la connexion .
      * @throws GeneralSecurityException .
      * @throws IOException              .
      */
