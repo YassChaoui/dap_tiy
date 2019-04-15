@@ -13,18 +13,22 @@ public class Config {
     private static final String CREDENTIALS_FILE_PATH = System.getProperty("user.home") + "/dap/credentials.json";
     /** * Nom de l'application. */
     private static final String APPLICATION_NAME = "HoC DaP";
+
+    //TODO chy by Djer |javaDoc| Mauvais emplacement de JavaDoc
     /**
      * @param tokenFolderName if
      * @param credFilePath    if
      * @param appName         if
      */
 
+  //TODO chy by Djer |javaDoc| Tes commentaires sur les constantes iraient mieux ici. Pour les constantes ajoute juste "Valeur par defaut pour ...." devant.
     private String tokenDirectory;
     /** . */
     private String credFilePath;
     /** . */
     private String appName;
 
+  //TODO chy by Djer |javaDoc| "Initialise les variables avec les valeurs par defaut" serait mieux.
     /** . */
     public Config() {
         tokenDirectory = TOKEN_DIR;

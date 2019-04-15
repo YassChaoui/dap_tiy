@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 import fr.hoc.dap.server.service.Config;
 
+//TODO chy by Djer |Java| Evite de conserver trop de code commenté, supprime une fois que tu es "certains" que cela ne te sert plus.
 /** . */
 @SpringBootApplication
 public class Application {

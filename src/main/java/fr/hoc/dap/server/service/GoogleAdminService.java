@@ -25,11 +25,12 @@ public class GoogleAdminService extends GoogleService {
         return datas;
     }
 
+
+    //TODO chy by Djer |JavaDoc| Supprime dans le "StoredCredential" pas dans le credential.json !
     /**
      * Methode qui supprime un utilisateur de la liste dans le credential.json .
      * @param userkey clé de l'utilisateur
-     * @return datas : données des utilisateurs.
-     * @throws GeneralSecurityException .
+     * @return datas : données des utilisateurs. //TODO chy by Djer |JavaDoc| "données des utilisateurs après suppression" serait mieux
      * @throws IOException              .
     */
     public DataStore<StoredCredential> deleteUser(final String userkey) throws GeneralSecurityException, IOException {

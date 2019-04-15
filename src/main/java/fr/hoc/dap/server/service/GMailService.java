@@ -26,6 +26,8 @@ public final class GMailService extends GoogleService {
      * @throws GeneralSecurityException if security related class problem
      * @throws IOException              if credentials problem
      */
+    //TODO chy by Djer |Java| "BuildService" serait mieux comme nom de méthode
+    //TODO chy by Djer |Java| Devrait être privée, inutile à l'extérieur de cette classe
     public Gmail getService(final String userKey) throws GeneralSecurityException, IOException {
         NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
         Gmail service = new Gmail.Builder(httptransport, JSON_FACTORY, getCredentials(userKey))
@@ -40,7 +42,9 @@ public final class GMailService extends GoogleService {
      * @throws IOException if credentials aren't good.
      * @return label as string
      */
+  //TODO chy by Djer |Java| Cette méthode n'est utilisée que par cette classe, elle devrait être privée
     public String getLabel(final Gmail service, final String userId, final String labelId) throws IOException {
+        //TODO chy by Djer |Log4J| Une petite log ? "Searching for labels for : " + userkey.
         Label label = service.users().labels().get(userId, labelId).execute();
 
         // System.out.println("Label " + label.getName() + " retrieved.");
@@ -74,7 +78,9 @@ public final class GMailService extends GoogleService {
      * @throws IOException if credentials aren't valid.
      * @return theMessage.
      */
+  //TODO chy by Djer |Java| Devrait être privée. Deplus son paramètre "Gmail" la rend difficle à utiliser de l'extérieur.
     public Message getMessage(final Gmail service, final String userId, final String messageId) throws IOException {
+        //TODO chy by Djer |Log4J| Une petite log ? "Searching for message : " + messageId + ' for user : " + userkey.
         Message message = service.users().messages().get(userId, messageId).execute();
 
         System.out.println(StringUtils
@@ -92,6 +98,7 @@ public final class GMailService extends GoogleService {
      */
     public List<Message> listMessagesMatchingQuery(final Gmail service, final String userId, final String query)
             throws IOException {
+      //TODO chy by Djer |Log4J| Une petite log ? "Searching for messages matching filter : " + query + ' for user : " + userId.
         ListMessagesResponse response = service.users().messages().list(userId).setQ(query).execute();
 
         List<Message> messages = new ArrayList<Message>();

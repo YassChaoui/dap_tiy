@@ -52,6 +52,7 @@ class GoogleService {
         GoogleAuthorizationCodeFlow flow = getFlow();
         return flow.loadCredential(userKey);
     }
+  //TODO chy by Djer |Java| Les getter/setter sont en général defini à la fin de la classe.
 
     /**
      * @param config .

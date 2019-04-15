@@ -55,6 +55,7 @@ public class AdminController {
      */
     @RequestMapping("/delete/user")
     public String deleteUser(final String userkey) throws GeneralSecurityException, IOException {
+      //TODO chy by Djer |Java| Tu n'as pas besoin de la valeur de retour ici, tu peux te passer de la stocker dans une variable.
         DataStore<StoredCredential> deleteuser = gAdminService.deleteUser(userkey);
         return "redirect:/admin";
     }

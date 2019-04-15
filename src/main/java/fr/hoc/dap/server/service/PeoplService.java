@@ -19,6 +19,8 @@ public final class PeoplService extends GoogleService {
      * @throws GeneralSecurityException .
      * @throws IOException              .
      */
+    //TODO chy by Djer |Java| "BuildService" serait mieux comme nom de méthode
+    //TODO chy by Djer |Java| Devrait être privée, inutile à l'extérieur de cette classe
     public PeopleService getService() throws GeneralSecurityException, IOException {
         final NetHttpTransport httptransport = GoogleNetHttpTransport.newTrustedTransport();
         GoogleService gs = new GoogleService();
@@ -34,6 +36,7 @@ public final class PeoplService extends GoogleService {
      */
 
     public void getPeople() throws IOException, GeneralSecurityException {
+        //TODO chy by Djer |JavaDoc| Ce commentaire (de Code) est devenu FAUX !
         // Request 10 connections.
         ListConnectionsResponse response = getService().people().connections().list("people/me").setPageSize(1)
                 .setPersonFields("names,emailAddresses").execute();
@@ -45,12 +48,15 @@ public final class PeoplService extends GoogleService {
             for (Person person : connections) {
                 List<Name> names = person.getNames();
                 if (names != null && names.size() > 0) {
+                    //TODO chy by Djer |Java| pas de SysOut sur un serveur !
                     System.out.println("Name: " + person.getNames().get(0).getDisplayName());
                 } else {
+                    //TODO chy by Djer |Java| pas de SysOut sur un serveur !
                     System.out.println("No names available for connection.");
                 }
             }
         } else {
+            //TODO chy by Djer |Java| pas de SysOut sur un serveur !
             System.out.println("No connections found.");
         }
     }
