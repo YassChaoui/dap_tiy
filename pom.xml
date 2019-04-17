@@ -11,6 +11,8 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<pmdVersion>6.4.0</pmdVersion>
+		<!-- TODO chy by Djer |Maven| La propriete "java.version" est un racocurci 
+			(Spring Boot) pour les deux propriétés suivantes. Tu peux les supprimer -->
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -36,7 +38,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>	
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
@@ -45,6 +47,8 @@
 			<version>1.23.0</version>
 		</dependency>
 
+		<!-- TODO chy by Djer |Maven| Cette dépendance n'est plus utile depuis 
+			qu'on est passer avec "/OAuth2CallBack" géré par nous même (le "mode serveur") -->
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
 			<artifactId>google-oauth-client-jetty</artifactId>
@@ -78,7 +82,7 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.9.1</version><!--$NO-MVN-MAN-VER$-->
+			<version>2.9.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 
 	</dependencies>
@@ -86,12 +90,13 @@
 
 	<build>
 		<plugins>
-		<plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.0.0</version>
-            
-        </plugin>
+			<plugin>
+			<!-- TODO chy by Djer |Audit Code| Il te manque l'emplacment du fichier de configuration -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.0.0</version>
+
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -104,6 +109,8 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
+							<!-- TODO chy by Djer |Maven| Attention ton Jar risque de ne plus 
+								se lancer car contradictoire avec la config du plugin org.springframework.boot:spring-boot-maven-plugin -->
 							<mainClass>fr.hoc.dap.server.Start</mainClass>
 						</manifest>
 					</archive>

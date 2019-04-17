@@ -14,15 +14,17 @@ import fr.hoc.dap.server.service.CalendarService;
 /** Controlleur Calendar. */
 @RestController
 public class CalendarController {
+  //TODO chy by Djer |JavaDoc| Tu ne payeras jamais l'encre de ton écran, n'économise pas trop de caracères, ca rarement efficace.
     /** Acces to Calendar API. */
     @Autowired
     private CalendarService cs;
 
+  //TODO chy by Djer |JavaDoc| "liste des prochains évènnemnts" serait mieux.
     /**
      * @return .
-     * @param userKey .
-     * @param role    .
-     * @param eventNb .
+     * @param userKey . //TODO chy by Djer |JavaDoc| "Identifiant de l'utilisateur DaP" serait mieux.
+     * @param role    . //TODO chy by Djer |JavaDoc| "Devenu utile car non implementé" serait mieux ?
+     * @param eventNb . //TODO chy by Djer |JavaDoc| "Nombre de prochains évènnements à récupérer" serait mieux.
      * @throws GeneralSecurityException .
      * @throws IOException              .
      * @throws NumberFormatException    .
